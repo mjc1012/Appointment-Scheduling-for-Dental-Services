@@ -1,0 +1,45 @@
+{% extends 'base.html' %} {% block content %}
+<nav>
+  <div class="sidebar-button">
+    <i class='bx bx-menu sidebarBtn'></i>
+    <span class="dashboard">Patient Table</span>
+  </div>
+  <div class="search-box">
+    <form action="" method="get">
+      <input type="text" name="search" placeholder="Search Last Name...." value="{{ request.GET.search }}">
+      <button class='bx bx-search'></button>
+    </form>
+  </div>
+</nav>
+<div class="home-content">
+  <div class="sales-boxes">
+    <div class="recent-sales box">
+      <div class="title">Patients
+        <div class="button" style="float:right; margin-top: -25px;">
+          <a href="http://127.0.0.1:8000/create_patient"> + </a>
+        </div>
+      </div>
+      <div class="sales-details">
+        <table>
+          <tr>
+            <th style="padding:10px 100px 10px 0;">Last Name</th>
+            <th style="padding:10px 100px 10px 0;">First Name</th>
+            <th>Action</th>
+          </tr>
+          {% for patient in object_list %}
+          <tr>
+            <td style="padding:10px 100px 10px 0;">{{patient.last_name}}</td>
+            <td style="padding:10px 100px 10px 0;">{{patient.first_name}}</td>
+            <td>
+              <div class="button"> <a href="{% url 'toothery:patient' patient.id %}">View</a></div>
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

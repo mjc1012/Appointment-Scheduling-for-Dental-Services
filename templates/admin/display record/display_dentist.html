@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% block content %}
+<div class="home-content">
+  <div class="sales-boxes">
+    <div class="recent-sales box">
+      <div class="title">Dentists
+      </div>
+      <div class="sales-details">
+        <ul>
+          <li>Last Name: {{dentist.last_name}}</li>
+          <li>First Name: {{dentist.first_name}}</li>
+          <li>Middle Name: {{dentist.middle_name}}</li>
+          <li>Email Address: {{dentist.email_address}}</li>
+          <li>Contact Number: {{dentist.contact_number}}</li>
+          <li>Years Of Service: {{dentist.years_of_service}}</li>
+        </ul>
+      </div>
+
+
+      <div class="button">
+        <a style="margin-right: 15px;" href="{% url 'toothery:update_dentist' dentist.id %}">
+          Edit</a>
+        <a style="margin-right: 15px;" href="{% url 'toothery:delete_dentist' dentist.id %}">
+          Delete</a>
+        <a href="{% url 'toothery:dentists' %}">
+          Back</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block content %}
+<div class="home-content">
+  <div class="sales-boxes">
+    <div class="recent-sales box">
+      <div class="title">Procedures
+      </div>
+      <div class="sales-details">
+        <ul>
+          <li>Title: {{procedure.title}}</li>
+          <li>Price: {{procedure.price}}</li>
+          <li>Description: {{procedure.description}}</li>
+        </ul>
+      </div>
+
+      <div class="button">
+        <a style="margin-right: 15px;" href="{% url 'toothery:update_procedure' procedure.id %}">
+          Edit</a>
+        <a style="margin-right: 15px;" href="{% url 'toothery:delete_procedure' procedure.id %}">
+          Delete</a>
+        <a href="{% url 'toothery:procedures' %}">
+          Back</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

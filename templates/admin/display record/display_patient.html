@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% block content %}
+<div class="home-content">
+  <div class="sales-boxes">
+    <div class="recent-sales box">
+      <div class="title">Patient
+      </div>
+      <div class="sales-details">
+        <ul>
+          <li>Last Name: {{patient.last_name}}</li>
+          <li>First Name: {{patient.first_name}}</li>
+          <li>Middle Name: {{patient.middle_name}}</li>
+          {% if patient.user_id %}
+          <li>Username: {{patient.user.username}}</li>
+          {% endif %}
+          <li>Email Address: {{patient.email_address}}</li>
+          <li>Contact Number: {{patient.contact_number}}</li>
+          <li>Street: {{patient.street}}</li>
+          <li>City: {{patient.city}}</li>
+          <li>Province: {{patient.province}}</li>
+          <li>Zip Code: {{patient.zip_code}}</li>
+        </ul>
+      </div>
+
+      <div class="button">
+        <a style="margin-right: 15px;" href="{% url 'toothery:update_patient' patient.id %}">
+          Edit</a>
+        {% if patient.user_id %}
+        <a style="margin-right: 15px;" href="{% url 'toothery:delete_patient_user' patient.user_id %}">
+          Delete</a>
+        {% else %}
+        <a style="margin-right: 15px;" href="{% url 'toothery:delete_patient' patient.id %}">
+          Delete</a>
+        {% endif %}
+        <a href="{% url 'toothery:patients' %}">
+          Back</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

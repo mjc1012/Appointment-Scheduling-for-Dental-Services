@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block content %}
+{% load crispy_forms_tags %}
+<div class="home-content">
+    <div class="sales-boxes">
+        <div class="recent-sales box">
+            <div class="title">Update Procedure
+            </div>
+            <br>
+            {% load crispy_forms_filters %}
+            <div class="form-group">
+                {% crispy form %}
+            </div>
+
+            <br>
+            <div class="button">
+                <a style="margin-right: 15px;" href="{% url 'toothery:procedure' procedure.id %}">
+                    Back</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+<br>
+{% endblock %}

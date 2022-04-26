@@ -1,0 +1,191 @@
+{% if user.is_authenticated %}{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dental Hygiene Clinic ">
+  <meta name="author" content="Fleurdelisse Rabanes and Marc John Corral">
+  <title>Toothery - Dental Hygiene Clinic </title>
+
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/style.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div>
+    <div class="wrapper">
+      <div id="navbar">
+        <img class="logo" src="{% static 'assets/logo.png' %}" />
+      </div>
+      <nav role='navigation'>
+        <div id="menuToggle">
+          <input type="checkbox" />
+          <span></span><span></span><span></span>
+          <ul id="menu" style="height: 800px;margin: -100px 0 0px 0;padding: 150px 40px 181px 0px;">
+            <a class="ulol" href="{% url 'toothery:user_index' %}">
+              <li>Home</li>
+            </a>
+            <a class="ulol" href="{% url 'toothery:user_services' %}">
+              <li>Services</li>
+            </a>
+            <a class="ulol" href="{% url 'toothery:user_about' %}">
+              <li>About Us</li>
+            </a>
+            <a class="ulol" href="{% url 'toothery:user_contact' %}">
+              <li>Contact Us</li>
+            </a>
+            {% if user.is_authenticated %}
+            <a class="ulol" href="{% url 'toothery:add_book_appointment' pk %}">
+              <li>Book Appointment</li>
+            </a>
+            <a class="ulol" href="{% url 'toothery:book_appointments' pk %}">
+              <li>My Appointments</li>
+            </a>
+            <a class="ulol" href="{% url 'toothery:display_user' pk %}">
+              <li>View User Information</li>
+            </a>
+            <a class="ulol" href="{% url 'users:password' %}">
+              <li>Change Password</li>
+            </a>
+            <a class="ulol" href="{% url 'users:delete_user' pk2 %}">
+              <li>Delete Account</li>
+            </a>
+            <a class="ulol" href="{% url 'logout' %}">
+              <li>Log out</li>
+            </a>
+            {% else %}
+            <a class="ulol" href="{% url 'login' %}">
+              <li>Log in</li>
+            </a>
+            <a class="ulol" href="{% url 'users:register' %}">
+              <li>Register</li>
+            </a>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <div class="base">
+      <div class="subtitle">
+        <h3 style="display: block; font-size: 1.17em;margin-block-start: 1em;
+              margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px; font-weight: bold;">
+
+          Your appointment has <br>
+          been scheduled on {{appointment.date_of_appointment}}
+
+        </h3>
+      </div>
+
+      <div class="contact-sideimg2">
+
+      </div>
+
+      <div class="container_step_two">
+        <div class="booking">
+
+          <h2>Details</h2>
+
+          <div class="contact-page">
+            <ul style="list-style-type:none;">
+              <li class="bio2"><b>Appointmnet Date:</b> {{appointment.date_of_appointment}}</li>
+              <li class="bio2"><b>Appointment Time:</b> {{appointment.time_of_appointment}}</li>
+              <li class="bio2"><b>Patient:</b> {{appointment.patient}}</li>
+              <li class="bio2"><b>Dentist:</b> {{appointment.dentist}}</li>
+              {% for procedure in appointment.procedures.all %}
+              <li class="bio2"><b>Procedure: </b>{{procedure}}</li>
+              {% endfor %}
+            </ul>
+            <br>
+
+            <div class="buton">
+              <a style="margin-right: 15px;" href="{% url 'toothery:update_book_appointment' appointment.id %}">
+                Edit</a>
+              <a style="margin-right: 15px;" href="{% url 'toothery:delete_book_appointment' pk appointment.id %}">
+                Delete</a>
+              <a style="margin-right: 200px;" href="{% url 'toothery:book_appointments' pk %}">
+                Back</a>
+            </div>
+
+            <div class="smile">
+              <h3>Creating beautiful smiles every day.</h3>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer style="  margin-top: 500px;">
+    <div class="separator">
+      <h2>Toothery<br>
+        Dental Hygiene Clinic
+      </h2>
+      <p class="bio">
+        Email: info@mysite.com<br>
+        Tel: 123-456-7890<br>
+        500 Terry Francois Street<br>
+        San Francisco, CA 94158
+      </p>
+    </div>
+    <div class="separator">
+      <h2>Quick Links</h2>
+
+      <a class="bio" href="{% url 'toothery:user_index' %}">
+        Home
+      </a><br>
+      <a class="bio" href="{% url 'toothery:user_services' %}">
+        Services
+      </a><br>
+      <a class="bio" href="{% url 'toothery:user_about' %}">
+        About Us
+      </a><br>
+      <a class="bio" href="{% url 'toothery:user_contact' %}">
+        Contact Us
+      </a>
+    </div>
+    <div class="separator">
+      <h2> Clinic Hours</h2>
+      <p class="bio">
+        Mon. Wed, Thu: 9am to 5pm<br>
+        Tue: 11am to 7pm<br>
+        Fri: 9am to 1pm<br>
+        By Appointment Only
+      </p>
+      <a href="{% url 'toothery:user_contact' %}"><button class="button"><span>Contact Us</span></button></a>
+    </div>
+
+
+  </footer>
+  <div class="foot">
+    <p class="credits">© Marc John Corral and Fleurdelisse Rabanes CSIT327 F1-C1 AY 2021 - 2022.
+  </div>
+  <script>
+
+    // When the user scrolls down 20px from the top of the document, slide down the navbar
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("navbar").style.top = "0";
+      } else {
+        document.getElementById("navbar").style.top = "-50px";
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>
+{% else %}
+<meta http-equiv="refresh" content="1; URL=http://127.0.0.1:8000/" />
+{% endif %}

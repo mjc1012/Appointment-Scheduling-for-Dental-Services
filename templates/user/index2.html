@@ -1,0 +1,372 @@
+{% load static %}
+<!-- 
+    Index: main page 
+-->
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dental Hygiene Clinic ">
+  <meta name="author" content="Fleurdelisse Rabanes and Marc John Corral">
+  <title>Toothery - Dental Hygiene Clinic </title>
+
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/style.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="bgimg-1">
+    <div class="wrapper">
+
+      <nav role='navigation'>
+
+        <div id="menuToggle">
+          <input type="checkbox" />
+          <span></span><span></span><span></span>
+          <ul id="menu">
+            <a href="{% url 'toothery:user_index' %}">
+              <li>Home</li>
+            </a>
+            <a href="{% url 'toothery:user_services' %}">
+              <li>Services</li>
+            </a>
+            <a href="{% url 'toothery:user_about' %}">
+              <li>About Us</li>
+            </a>
+            <a href="{% url 'toothery:user_contact' %}">
+              <li>Contact Us</li>
+            </a>
+            {% if user.is_authenticated %}
+            <a href="{% url 'toothery:add_book_appointment' pk %}">
+              <li>Book Appointment</li>
+            </a>
+            <a href="{% url 'toothery:book_appointments' pk %}">
+              <li>My Appointments</li>
+            </a>
+            <a href="{% url 'toothery:display_user' pk %}">
+              <li>View User Information</li>
+            </a>
+            <a href="{% url 'users:password' %}">
+              <li>Change Password</li>
+            </a>
+            <a href="{% url 'users:delete_user' pk2 %}">
+              <li>Delete Account</li>
+            </a>
+            <a href="{% url 'logout' %}">
+              <li>Log out</li>
+            </a>
+            {% else %}
+            <a href="{% url 'login' %}">
+              <li>Log in</li>
+            </a>
+            <a href="{% url 'users:register' %}">
+              <li>Register</li>
+            </a>
+            {% endif %}
+
+          </ul>
+        </div>
+      </nav>
+      <div>
+        <div class="title">
+          <h1>
+            Dental<br>
+            Hygiene Clinic
+          </h1>
+        </div>
+        <div class="tagline">
+          <p>One More Reason to Smile</p>
+        </div>
+        <a href="{% url 'toothery:add_book_appointment' pk %}">
+          <button class="button" style="margin-top: 40px;">
+            <span>Book Now</span>
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="bgimg-2">
+    <span></span>
+  </div>
+  <div class="wrapper">
+    <div class="base">
+      <div class="subtitle">
+        <h3>
+          Our<br>
+          Services
+        </h3>
+      </div>
+      <div class="bgimg-3">
+      </div>
+
+      <div class="services_container">
+        <div class="services">
+          <h2>Teeth Whitening</h2>
+          <p class="description">Teeth whitening involves bleaching your teeth to make them
+            lighter. It can't make your teeth brilliant white, but it can lighten the existing colour
+            by several shades.</p>
+
+          <h2>Dental Cleaning</h2>
+          <p class="description">This procedure remove the dental plaque and tartar that have
+            accumulated on the teeth to protect them from cavities or dental caries as well as other
+            tooth and gum problems.</p>
+
+          <h2>Custom Sport Guards</h2>
+          <p class="description">A revolutionary piece of protective gear that protects the teeth,
+            and jaw from impact and injury during sports activities. These
+            sports guards cushion blows that could cause injury.</p>
+          <br>
+        </div>
+        <div class="services">
+          <h2>Polishing & Stain Removal</h2>
+
+
+          <p class="description">Tooth polishing is a procedure carried out as a part of oral
+            prophylaxis in most dental practices. It smoothens the teeth's surfaces
+            to make it glossy and lustrous.</p>
+
+          <h2>Fluoride Treatments</h2>
+          <p class="description">Fluoride is a naturally-occurring mineral that helps rebuild
+            tooth enamel and reverse early signs of tooth decay. Your body takes in fluoride
+            in two ways: systemically and topically. </p>
+
+          <h2>Children's Hygiene</h2>
+          <p class="description">Proper care of your child's teeth and gums includes brushing
+            and rinsing daily. It also includes having routine dental exams, and getting necessary
+            treatments such as extractions, fillings, or braces.</p>
+
+        </div>
+
+        <a href="http://127.0.0.1:8000/services">
+          <button class="button" style="margin-top:-100px ;margin-left: 350px; float:left;">
+            <span>See all Services</span>
+          </button></a>
+      </div>
+    </div>
+
+
+    <div class="base">
+      <div class="subtitle" style="margin-top: 750px;">
+        <h3 style="text-align: center;"> Our Team</h3>
+      </div>
+      <div class="team_container">
+        <div class="team">
+          <img class="team_img" src="{% static 'assets/team1.png' %}">
+          <h2>Angela L. Reed</h2>
+          <p class="job_title">BSc, RDH</p>
+          <p class="bio">Providing the most advanced dental care in a comfortable and
+            pleasant atmosphere are the priorities of Toothery Dental Clinic. Dr. Reed
+            is among the most accomplished dentists in South Texas. </p>
+        </div>
+        <div class="team">
+          <img class="team_img" src="{% static 'assets/team2.png' %}">
+          <h2>Kristin J. Mayes</h2>
+          <p class="job_title">BSc, RDH</p>
+          <p class="bio">Dr. Mayes provides quality dentistry for her patients, caring
+            for adults and children in her practice. She is widely recognized across South Texas
+            for her thorough and gentle care of patients of all ages. </p>
+
+        </div>
+        <div class="team">
+          <img class="team_img" src="{% static 'assets/team3.png' %}">
+          <h2>Laura Park</h2>
+          <p class="job_title">BSc, RDH</p>
+          <p class="bio">Patients of Dr. Park are fortunate to receive state-of-the-art
+            dental care as he is an avid participant is continuing dental education and is
+            consistently performing cutting edge dental procedures. </p>
+        </div>
+      </div>
+      <div class="team_container_bottom">
+        <a href="http://127.0.0.1:8000/about">
+          <button class="button">
+            <span>More About Us</span>
+          </button>
+        </a>
+      </div>
+    </div>
+
+
+    <div class="base">
+      <div class="subtitle">
+        <h3>
+          <br>
+          Patients <br>
+          Recommending
+        </h3>
+      </div>
+      <div class="bgimg-4">
+      </div>
+
+      <div class="testimonial_container">
+        <div class="testimonial">
+          <div class="testimonial_slider_2">
+            <input type="radio" name="slider_2" id="slide_2_1" checked />
+            <input type="radio" name="slider_2" id="slide_2_2" />
+            <input type="radio" name="slider_2" id="slide_2_3" />
+            <input type="radio" name="slider_2" id="slide_2_4" />
+            <div class="boo_inner clearfix">
+
+              <div class="slide_content">
+                <div class="testimonial_2">
+                  <div class="author_2">
+                    <h3>Karen Sweetland</h3>
+                  </div>
+                  <div class="content_2">
+                    <p class="description">
+                      We had a very pleasant experience with Dr. Meena and her staff.
+                      My daughter was very anxious about the appointment and any procedure,
+                      but Dr. Meena was very patient with her and spend a lot of time trying to calm
+                      her down, the staff was very helpful and kind and always available to help.
+                      Dr. Meena is very professional, she takes the time to explain what needs to be
+                      done and provides valuable advice , It's not easy to find a good dentist for your
+                      kids, I highly recommend Dr. Meena and her staff for kids and adults.
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="slide_content">
+                <div class="testimonial_2">
+                  <div class="author_2">
+                    <h3>Leah Jordan</h3>
+                  </div>
+
+                  <div class="content_2">
+                    <p class="description">
+                      I have been an Invisalign patient with Dr. Meena for the last 4 months.
+                      Dr. Meena is an excellent dentist. She took the time to explain every procedure
+                      she was doing. For example, when I got my teeth whitened, Dr. Meena was very
+                      supportive, and thorough when explaining the process. She is a professional and
+                      has a naturally lovely personality. I would recommend Dr. Meena to everyone.
+                      She is the best dentist I have ever had.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="slide_content">
+                <div class="testimonial_2">
+                  <div class="author_2">
+                    <h3>Brian McNaught</h3>
+                  </div>
+
+                  <div class="content_2">
+                    <p class="description">
+                      I find that Dr. Meena takes time to explain all the procedures. She explains all the pros and
+                      cons of the treatment so that I can make an independent ...More » I find that Dr. Meena
+                      takes time to explain all the procedures. She explains all the pros and cons of the treatment
+                      so that I can make an independent judgment. Her staff is also extremely helpful. Dr. Meena
+                      has a great rapport with her assistant and hygienist and they work very well together.
+                      customers.”</p>
+                  </div>
+
+                </div>
+              </div>
+
+
+            </div>
+            <div id="controls">
+              <label for="slide_2_1"></label>
+              <label for="slide_2_2"></label>
+              <label for="slide_2_3"></label>
+
+            </div>
+          </div>
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer style="  margin-top: 700px;">
+    <div class="separator">
+      <h2>Toothery<br>
+        Dental Hygiene Clinic
+      </h2>
+      <p class="bio">
+        Email: info@mysite.com<br>
+        Tel: 123-456-7890<br>
+        500 Terry Francois Street<br>
+        San Francisco, CA 94158
+      </p>
+    </div>
+    <div class="separator">
+      <h2>Quick Links</h2>
+
+      <a class="bio" href="{% url 'toothery:user_index' %}">
+        Home
+      </a><br>
+      <a class="bio" href="{% url 'toothery:user_services' %}">
+        Services
+      </a><br>
+      <a class="bio" href="{% url 'toothery:user_about' %}">
+        About Us
+      </a><br>
+      <a class="bio" href="{% url 'toothery:user_contact' %}">
+        Contact Us
+      </a>
+
+    </div>
+    <div class="separator">
+      <h2> Clinic Hours</h2>
+      <p class="bio">
+        Mon. Wed, Thu: 9am to 5pm<br>
+        Tue: 11am to 7pm<br>
+        Fri: 9am to 1pm<br>
+        By Appointment Only
+      </p>
+      <a href="{% url 'toothery:user_contact' %}"><button class="button"><span>Contact Us</span></button></a>
+    </div>
+
+
+  </footer>
+  <div class="foot">
+    <p class="credits">© Marc John Corral and Fleurdelisse Rabanes CSIT327 F1-C1 AY 2021 - 2022.
+  </div>
+  <script>
+
+
+    // When the user scrolls down 20px from the top of the document, slide down the navbar
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("navbar").style.top = "0";
+      } else {
+        document.getElementById("navbar").style.top = "-50px";
+      }
+    }
+
+
+    $(document).ready(function () {
+      pagenum = 1;
+      function AutoRotate() {
+        var myele = null;
+        var allElements = document.getElementsByTagName('label');
+        for (var i = 0, n = allElements.length; i < n; i++) {
+          var myfor = allElements[i].getAttribute('for');
+          if ((myfor !== null) && (myfor == ('slide_2_' + pagenum))) {
+            allElements[i].click();
+            break;
+          }
+        }
+        if (pagenum == 4) {
+          pagenum = 1;
+        } else {
+          pagenum++;
+        }
+      }
+      setInterval(AutoRotate, 5000);
+    });
+
+  </script>
+
+</body>
+
+</html>

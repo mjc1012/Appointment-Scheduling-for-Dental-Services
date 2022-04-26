@@ -1,0 +1,131 @@
+{% extends 'base.html' %} {% block content %}
+<nav>
+  <div class="sidebar-button">
+    <i class='bx bx-menu sidebarBtn'></i>
+    <span class="dashboard">Dashboard</span>
+  </div>
+
+
+  <div class="search-box">
+    <input type="text" placeholder="Search...">
+    <i class='bx bx-search'></i>
+  </div>
+
+
+</nav>
+<div class="home-content">
+  <div class="overview-boxes">
+    <div class="box">
+      <div class="right-side">
+        <div class="box-topic">Total Patients </div>
+        <div class="number">{{patients_count}}</div>
+        <div class="indicator">
+          <i class='bx bx-up-arrow-alt'></i>
+          <span class="text">Up from yesterday</span>
+        </div>
+      </div>
+
+    </div>
+    <div class="box">
+      <div class="right-side">
+        <div class="box-topic">Total Appointments</div>
+        <div class="number">{{appointments_count}}</div>
+        <div class="indicator">
+          <i class='bx bx-down-arrow-alt down'></i>
+          <span class="text">Down from Today</span>
+        </div>
+      </div>
+
+    </div>
+    <div class="box">
+      <div class="right-side">
+        <div class="box-topic">Pending Appointments</div>
+        <div class="number">{{appointments_pending}}</div>
+        <div class="indicator">
+          <i class='bx bx-up-arrow-alt'></i>
+          <span class="text">Pending Appointments</span>
+        </div>
+      </div>
+
+    </div>
+    <div class="box">
+      <div class="right-side">
+
+        <div class="box-topic">Expired Appointments</div>
+        <div class="number">{{appointments_expired}}</div>
+        <div class="indicator">
+          <i class='bx bx-up-arrow-alt'></i>
+          <span class="text">Up from yesterday</span>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="sales-boxes">
+    <div class="recent-sales2 box">
+      <br>
+      <div class="title">Appointments</div>
+      <div class="sales-details">
+        <table>
+          <tr>
+            <th class="topic" style="padding:10px 50px 10px 50px;">Date Of Appointment</th>
+            <th class="topic" style="padding:10px 50px 10px 50px;">Time Of Appointment</th>
+            <th class="topic" style="padding:10px 50px 10px 50px;">Dentist</th>
+            <th class="topic" style="padding:10px 50px 10px 50px;">Patient</th>
+          </tr>
+          {% for appointment in appointments %}
+          <tr>
+            <td style="padding:10px 50px 10px 50px;">{{appointment.date_of_appointment}}</td>
+            <td style="padding:10px 50px 10px 50px;">{{appointment.time_of_appointment}}</td>
+            <td style="padding:10px 50px 10px 50px;">{{appointment.dentist}}</td>
+            <td style="padding:10px 50px 10px 50px;">{{appointment.patient}}</td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+    <div class="top-sales box">
+      <br>
+      <div class="title">Top landing pages by sessions</div>
+      <br>
+      <ul class="top-sales-details" style="margin-left: -95px;">
+        <li>
+          <a href="#"></a>
+
+          <ul class="details" style="margin-left: 30px;">
+
+            <li><a href="#">homepage/</a></li>
+            <li><a href="#">services/</a></li>
+            <li><a href="#"> booking/</a></li>
+            <li><a href="#">about/</a></li>
+            <li><a href="#">contact/</a></li>
+
+          </ul>
+
+
+
+          <ul class="details">
+            <li>62</li>
+            <li>26</li>
+            <li>45</li>
+            <li>18</li>
+            <li>13</li>
+          </ul>
+
+          <ul class="details">
+            <li>43%</li>
+            <li>18%</li>
+            <li>25%</li>
+            <li>69%</li>
+            <li>83%</li>
+          </ul>
+
+
+    </div>
+  </div>
+  <br>
+
+</div>
+{% endblock %}

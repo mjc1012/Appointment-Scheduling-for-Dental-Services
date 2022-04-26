@@ -1,0 +1,145 @@
+{% load static %}
+<!-- 
+    Index: main page 
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Dental Hygiene Clinic " />
+  <meta name="author" content="Fleurdelisse Rabanes and Marc John Corral" />
+  <title>Toothery - Dental Hygiene Clinic</title>
+
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/style.css' %}" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet" />
+
+</head>
+
+<body>
+  <div>
+    <div class="wrapper">
+      <div id="navbar">
+        <img class="logo" src="{% static 'assets/logo.png' %}" />
+      </div>
+      <nav role='navigation'>
+        <div id="menuToggle">
+          <input type="checkbox" />
+          <span></span><span></span><span></span>
+          <ul id="menu">
+            <a href="{% url 'toothery:index' %}">
+              <li>Home</li>
+            </a>
+            <a href="{% url 'toothery:services' %}">
+              <li>Services</li>
+            </a>
+            <a href="{% url 'toothery:about' %}">
+              <li>About Us</li>
+            </a>
+            <a href="{% url 'toothery:contact' %}">
+              <li>Contact Us</li>
+            </a>
+            {% if user.is_authenticated %}
+            <a href="{% url 'toothery:add_book_appointment' pk %}">
+              <li>Book Appointment</li>
+            </a>
+            <a href="{% url 'toothery:book_appointments' pk %}">
+              <li>My Appointments</li>
+            </a>
+            <a href="{% url 'toothery:display_user' pk %}">
+              <li>View User Information</li>
+            </a>
+            <a href="{% url 'users:password' %}">
+              <li>Change Password</li>
+            </a>
+            <a href="{% url 'users:delete_user' pk2 %}">
+              <li>Delete Account</li>
+            </a>
+            <a href="{% url 'logout' %}">
+              <li>Log out</li>
+            </a>
+            {% else %}
+            <a href="{% url 'login' %}">
+              <li>Log in</li>
+            </a>
+            <a href="{% url 'users:register' %}">
+              <li>Register</li>
+            </a>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <div class="base">
+      <div class="subtitle">
+        <h3>Get in touch</h3>
+      </div>
+      <div class="map"></div>
+      <div class="contactus_container">
+        <div class="about_padding2">
+          <div class="contact-page">
+            <h2>Appointment</h2>
+            <p>
+              We know you have many choices when choosing a dentist in Worcester,
+              MA so we have made requesting an appointment a simple process via
+              our Web site. If, for any reason you cannot keep a scheduled appointment,
+              or will be delayed, please call us as soon as possible.
+              <br><br>
+              In addition, we accept most traditional insurance plans, contact our office to
+              verify acceptance of your plan. We accept checks, cash or credit cards. We also
+              offer a flexible payment plan. Please see our Office Manager for details.
+
+            </p>
+            <h2> Clinic Hours</h2>
+            <p class="bio">
+              Monday: 09:00 AM - 05:00 PM<br>
+              Tuesday: 09:00 AM - 05:00 PM<br>
+              Wednesday: 09:00 AM - 05:00 PM<br>
+              Thursday: 09:00 AM - 05:00 PM<br>
+              Friday: 09:00 AM - 05:00 PM<br>
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="contact_icons">
+    <div class="contact-details" style="margin-left: 100px;">
+      <img class="icon" src="{% static 'assets/address-icon.png' %}">
+      <h2>Address: </h2>
+      <h4>
+        500 Francois Street, San Francisco, CA 94158
+      </h4>
+    </div>
+
+    <div class="contact-details" style="margin-left: 20px;">
+      <img class="icon" src="{% static 'assets/email-icon.png' %}">
+      <h2>Email:</h2>
+      <h4>
+        info@tootherydentalclinic.com<br>
+      </h4>
+    </div>
+    <div class="contact-details">
+      <img class="icon" src="{% static 'assets/phone-icon.png' %}">
+      <h2>Phone:</h2>
+      <h4>
+        (808) 634-2105<br>
+      </h4>
+    </div>
+  </div>
+  <div class="foot" style="margin-top: 350px;">
+    <p class="credits">© Marc John Corral and Fleurdelisse Rabanes CSIT327 F1-C1 AY 2021 - 2022.
+  </div>
+</body>
+
+</html>

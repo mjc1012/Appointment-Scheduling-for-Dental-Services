@@ -1,0 +1,162 @@
+{% if user.is_authenticated %}{% load static %}{% load crispy_forms_tags %}
+<!-- 
+    Booking: Step 2
+-->
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dental Hygiene Clinic ">
+  <meta name="author" content="Fleurdelisse Rabanes and Marc John Corral">
+  <title>Toothery - Dental Hygiene Clinic </title>
+
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/style.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+
+  <!-- Fengyuan Chen's Datepicker -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.css"
+    integrity="sha256-b88RdwbRJEzRx95nCuuva+hO5ExvXXnpX+78h8DjyOE=" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.js"
+    integrity="sha256-/7FLTdzP6CfC1VBAj/rsp3Rinuuu9leMRGd354hvk0k=" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+  <div>
+    <div class="wrapper">
+      <div id="navbar">
+        <img class="logo" src="{% static 'assets/logo.png' %}" />
+      </div>
+      <nav role='navigation'>
+        <div id="menuToggle">
+          <input type="checkbox" />
+          <span></span><span></span><span></span>
+          <ul id="menu" style="height: 800px;margin: -100px 0 0px 0;padding: 150px 40px 181px 0px;">
+            <a class="ulol" href="{% url 'toothery:user_index' %}">
+              <li>Home</li>
+            </a>
+            <a class="ulol" href="{% url 'toothery:user_services' %}">
+              <li>Services</li>
+            </a>
+            <a class="ulol" href="{% url 'toothery:user_about' %}">
+              <li>About Us</li>
+            </a>
+            <a class="ulol" href="{% url 'toothery:user_contact' %}">
+              <li>Contact Us</li>
+            </a>
+            {% if user.is_authenticated %}
+            <a class="ulol" href="{% url 'toothery:add_book_appointment' pk %}">
+              <li>Book Appointment</li>
+            </a>
+            <a class="ulol" href="{% url 'toothery:book_appointments' pk %}">
+              <li>My Appointments</li>
+            </a>
+            <a class="ulol" href="{% url 'toothery:display_user' pk %}">
+              <li>View User Information</li>
+            </a>
+            <a class="ulol" href="{% url 'users:password' %}">
+              <li>Change Password</li>
+            </a>
+            <a class="ulol" href="{% url 'users:delete_user' pk2 %}">
+              <li>Delete Account</li>
+            </a>
+            <a class="ulol" href="{% url 'logout' %}">
+              <li>Log out</li>
+            </a>
+            {% else %}
+            <a class="ulol" href="{% url 'login' %}">
+              <li>Log in</li>
+            </a>
+            <a class="ulol" href="{% url 'users:register' %}">
+              <li>Register</li>
+            </a>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="bgimg-2">
+    <span></span>
+  </div>
+  <div class="wrapper">
+    <div class="base">
+      <div class="subtitle">
+        <h3 style="display: block; font-size: 1.17em;margin-block-start: 1em;
+            margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px; font-weight: bold;">
+          Edit User Information
+        </h3>
+      </div>
+
+      <div class="contact-sideimg5">
+
+      </div>
+
+
+      <div class="container_update_user" style="margin-top: -600px;">
+        <div class="booking">
+
+          <div class="contact-page">
+            <form method="POST">
+              {% csrf_token %}
+              {{ form1|crispy }}
+              {{ form2|crispy }}
+              <button class="booking_back_buttons" style="margin-top: 15px;margin-left: 5px;">
+                <a href="">Save</a>
+              </button>
+            </form>
+
+
+            <div class="booking_back_button" style="margin-top: -50px;margin-left: 540px;">
+              <a href="{% url 'toothery:display_user' user.patient.id %}">Back</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-sideimg4">
+      </div>
+    </div>
+  </div>
+
+
+  <div class="foot" style="float: left;padding-top: 15px;">
+    <p class="credits">© Marc John Corral and Fleurdelisse Rabanes CSIT327 F1-C1 AY 2021 - 2022.
+  </div>
+  <script>
+    document.getElementById("div_id_password").style.display = "none";
+  </script>
+  <script>
+
+
+    // When the user scrolls down 20px from the top of the document, slide down the navbar
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("navbar").style.top = "0";
+      } else {
+        document.getElementById("navbar").style.top = "-50px";
+      }
+    }
+
+  </script>
+</body>
+
+</html>
+{% else %}
+<meta http-equiv="refresh" content="1; URL=http://127.0.0.1:8000/" />
+{% endif %}

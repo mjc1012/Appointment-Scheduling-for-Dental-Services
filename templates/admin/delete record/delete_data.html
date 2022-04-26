@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block content %}
+<nav>
+  <div class="sidebar-button">
+    <i class='bx bx-menu sidebarBtn'></i>
+    <span class="dashboard">Delete</span>
+  </div>
+  <div class="search-box">
+    <input type="text" placeholder="Search...">
+    <i class='bx bx-search'></i>
+  </div>
+</nav>
+<div class="home-content">
+  <div class="sales-boxes">
+    <div class="recent-sales box">
+
+      <form method="POST">
+        {% csrf_token %}
+        <p>Are you sure you want to delete "{{object}}"?</p>
+        <button type="submit" class="btn btn-success">Delete</button>
+      </form>
+      <button id="btnBack" type="button" class="btn btn-danger" style="margin-top: -62px; margin-left: 100px;">
+        <span>Back</span>
+      </button>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

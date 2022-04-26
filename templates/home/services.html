@@ -1,0 +1,313 @@
+{% load static %}
+<!-- 
+    Index: Services Page 
+-->
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dental Hygiene Clinic ">
+  <meta name="author" content="Fleurdelisse Rabanes and Marc John Corral">
+  <title>Toothery - Dental Hygiene Clinic </title>
+
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/style.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+
+</head>
+
+<body style="background-color: #e1f6ec;">
+  <div>
+    <div class="wrapper">
+      <div id="navbar">
+        <img class="logo" src="{% static 'assets/logo.png' %}">
+      </div>
+      <nav role='navigation'>
+        <div id="menuToggle">
+          <input type="checkbox" />
+          <span></span><span></span><span></span>
+          <ul id="menu">
+            <a href="{% url 'toothery:index' %}">
+              <li>Home</li>
+            </a>
+            <a href="{% url 'toothery:services' %}">
+              <li>Services</li>
+            </a>
+            <a href="{% url 'toothery:about' %}">
+              <li>About Us</li>
+            </a>
+            <a href="{% url 'toothery:contact' %}">
+              <li>Contact Us</li>
+            </a>
+            {% if user.is_authenticated %}
+            <a href="{% url 'toothery:add_book_appointment' pk %}">
+              <li>Book Appointment</li>
+            </a>
+            <a href="{% url 'toothery:book_appointments' pk %}">
+              <li>My Appointments</li>
+            </a>
+            <a href="{% url 'toothery:display_user' pk %}">
+              <li>View User Information</li>
+            </a>
+            <a href="{% url 'users:password' %}">
+              <li>Change Password</li>
+            </a>
+            <a href="{% url 'users:delete_user' pk2 %}">
+              <li>Delete Account</li>
+            </a>
+            <a href="{% url 'logout' %}">
+              <li>Log out</li>
+            </a>
+            {% else %}
+            <a href="{% url 'login' %}">
+              <li>Log in</li>
+            </a>
+            <a href="{% url 'users:register' %}">
+              <li>Register</li>
+            </a>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+
+    </div>
+  </div>
+  <div class="wrapper">
+    <div class="services-base">
+      <div class="subtitle">
+        <h3 style="color: #322c4a;">
+          Book Your<br>
+          Appointment Today
+        </h3>
+      </div>
+
+      <button class="collapsible">Oral Assessment</button>
+      <div class="content">
+        <div class="col1">
+          <p class="description">Oral Assessment is a naturally-occurring mineral that helps rebuild
+            tooth enamel and reverse early signs of tooth decay. Your body takes in fluoride
+            in two ways: systemically and topically.</p>
+        </div>
+
+        <div class="col2">
+          <p class="description">
+            Rate: <br>
+            20 min<br>
+            ₱2000.00</p>
+        </div>
+        <div class="col3">
+          <a href="{% url 'toothery:booking' %}">
+            <button class="book-button">
+              <span>Book Now</span>
+            </button>
+          </a>
+        </div>
+      </div>
+
+      <button class="collapsible">Teeth Whitening</button>
+      <div class="content">
+        <div class="col1">
+          <p class="description">Teeth whitening involves bleaching your teeth to make them
+            lighter. It can't make your teeth brilliant white, but it can lighten the existing colour
+            by several shades.</p>
+        </div>
+
+        <div class="col2">
+          <p class="description">
+            Rate: <br>
+            1hr<br>
+            ₱5000.00</p>
+        </div>
+        <div class="col3">
+          <a href="{% url 'toothery:booking' %}">
+            <button class="book-button">
+              <span>Book Now</span>
+            </button>
+          </a>
+        </div>
+      </div>
+
+      <button class="collapsible">Dental Cleaning</button>
+      <div class="content">
+        <div class="col1">
+          <p class="description">This procedure remove the dental plaque and tartar that have
+            accumulated on the teeth to protect them from cavities or dental caries as well as other
+            tooth and gum problems.</p>
+        </div>
+
+        <div class="col2">
+          <p class="description">
+            Rate: <br>
+            30 min<br>
+            ₱1500.00</p>
+        </div>
+        <div class="col3">
+          <a href="{% url 'toothery:booking' %}">
+            <button class="book-button">
+              <span>Book Now</span>
+            </button>
+          </a>
+        </div>
+      </div>
+
+      <button class="collapsible">Custom Sport Guard</button>
+      <div class="content">
+        <div class="col1">
+          <p class="description">A revolutionary piece of protective gear that protects the teeth,
+            and jaw from impact and injury during sports activities. These
+            sports guards cushion blows that could cause injury.</p>
+        </div>
+
+        <div class="col2">
+          <p class="description">
+            Rate: <br>
+            45 min<br>
+            ₱50</p>
+        </div>
+        <div class="col3">
+          <a href="{% url 'toothery:booking' %}">
+            <button class="book-button">
+              <span>Book Now</span>
+            </button>
+          </a>
+        </div>
+      </div>
+
+      <button class="collapsible">Polishing & Stain Removal</button>
+      <div class="content">
+        <div class="col1">
+          <p class="description">Tooth polishing is a procedure carried out as a part of oral
+            prophylaxis in most dental practices. It smoothens the teeth's surfaces
+            to make it glossy and lustrous.</p>
+        </div>
+
+        <div class="col2">
+          <p class="description">
+            Rate: <br>
+            50 min<br>
+            ₱3500.00</p>
+        </div>
+        <div class="col3">
+          <a href="{% url 'toothery:booking' %}">
+            <button class="book-button">
+              <span>Book Now</span>
+            </button>
+          </a>
+        </div>
+      </div>
+
+
+
+      <button class="collapsible">Fluoride Treatment</button>
+      <div class="content">
+        <div class="col1">
+          <p class="description">Fluoride is a naturally-occurring mineral that helps rebuild
+            tooth enamel and reverse early signs of tooth decay. Your body takes in fluoride
+            in two ways: systemically and topically. </p>
+        </div>
+
+        <div class="col2">
+          <p class="description">
+            Rate: <br>
+            45 min<br>
+            ₱5000.00</p>
+        </div>
+        <div class="col3">
+          <a href="{% url 'toothery:booking' %}">
+            <button class="book-button">
+              <span>Book Now</span>
+            </button>
+          </a>
+        </div>
+      </div>
+
+      <button class="collapsible">Children's Hygiene</button>
+      <div class="content">
+        <div class="col1">
+          <p class="description">Proper care of your child's teeth and gums includes brushing
+            and rinsing daily. It also includes having routine dental exams, and getting necessary
+            treatments such as extractions, fillings, or braces.</p>
+        </div>
+
+        <div class="col2">
+          <p class="description">
+            Rate: <br>
+            45 min<br>
+            ₱2500.00</p>
+        </div>
+        <div class="col3">
+          <a href="{% url 'toothery:booking' %}">
+            <button class="book-button">
+              <span>Book Now</span>
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <footer style=" margin-top: 100px;">
+    <div class="separator">
+      <h2>Toothery<br>
+        Dental Hygiene Clinic
+      </h2>
+      <p class="bio">
+        Email: info@mysite.com<br>
+        Tel: 123-456-7890<br>
+        500 Terry Francois Street<br>
+        San Francisco, CA 94158
+      </p>
+
+    </div>
+
+    <div class="separator">
+      <h2>Quick Links</h2>
+
+      <a class="bio" href="http://127.0.0.1:8000/">Home</a><br>
+      <a class="bio" href="http://127.0.0.1:8000/services">Services</a><br>
+      <a class="bio" href="http://127.0.0.1:8000/about">About</a><br>
+      <a class="bio" href="http://127.0.0.1:8000/contact">Contact Us</a>
+
+    </div>
+
+    <div class="separator">
+      <h2> Clinic Hours</h2>
+      <p class="bio">
+        Mon. Wed, Thu: 9am to 5pm<br>
+        Tue: 11am to 7pm<br>
+        Fri: 9am to 1pm<br>
+        By Appointment Only
+      </p>
+
+      <a href="http://127.0.0.1:8000/contact"><button class="button"><span>Contact Us</span></button> </a>
+    </div>
+
+  </footer>
+  <div class="foot">
+    <p class="credits">© Marc John Corral and Fleurdelisse Rabanes CSIT327 F1-C1 AY 2021 - 2022.
+  </div>
+
+  <script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    }
+  </script>
+
+</body>
+
+</html>
